@@ -1,0 +1,11 @@
+git init
+
+
+git remote add origin https://github.com/Litominina/Tercera-Pre-entrega-Avila.git
+
+git add .
+
+git commit -m "Subiendo la carpeta al repositorio"
+
+
+git push -u origin main
