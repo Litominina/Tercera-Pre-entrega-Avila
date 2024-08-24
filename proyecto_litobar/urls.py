@@ -17,7 +17,7 @@ Including another URLconf
 
 from django.contrib import admin
 from django.urls import path
-from proyecto_litobar.views import saludo, otra_vista, dia_de_hoy, muestra_nombre, probando_template
+from proyecto_litobar.views import saludo, otra_vista, dia_de_hoy, muestra_nombre, probando_template, agendar_cita
 
 urlpatterns = [
     path("admin/", admin.site.urls),
@@ -26,4 +26,5 @@ urlpatterns = [
     path("dia/", dia_de_hoy),
     path("nombre/<nombre>/", muestra_nombre),
     path("plantillas/", probando_template),
+    path("agendar_cita/<fech>/<mot>/<vet>/", agendar_cita),
 ]

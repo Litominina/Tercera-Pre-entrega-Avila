@@ -1,6 +1,8 @@
 from django.http import HttpResponse
-from datetime import date
+from datetime import date, datetime
 from django.template import Template, Context
+from django.template import loader
+from AppLitobar.models import Cita
 
 
 
@@ -19,16 +21,31 @@ def muestra_nombre(self, nombre):
 
 
 def probando_template(request):
+	
+    nom = "Litobar"
+    ap = "Avila"
+    ranking_belleza = [1,2,3,4,5,6,7,8,9,10]
+	
+    diccionario = {"nombre": nom, "apellido": ap, "hoy": datetime.now(), "ranking": ranking_belleza}
 
-    miHtml = open("C:/Users/lavilaga/Desktop/Curso Python/Actividades/Tercera pre-entrega Avila/proyecto_litobar/plantillas/template1.html")
 
-    plantilla = Template(miHtml.read()) #Se carga en memoria nuestro documento, template1   
+    #miHtml = open("C:/Users/lavilaga/Desktop/Curso Python/Actividades/Tercera pre-entrega Avila/proyecto_litobar/plantillas/template1.html")
+
+    #plantilla = Template(miHtml.read()) #Se carga en memoria nuestro documento, template1   
     ##OJO importar template y contex, con: from django.template import Template, Context
 
-    miHtml.close() #Cerramos el archivo
+    #miHtml.close() #Cerramos el archivo
+	
+    plantilla = loader.get_template("template1.html")
 
-    miContexto = Context() #EN este caso no hay nada ya que no hay parametros, IGUAL hay que crearlo
+    #miContexto = Context(diccionario) #EN este caso no hay nada ya que no hay parametros, IGUAL hay que crearlo
 
-    documento = plantilla.render(miContexto) #Aca renderizamos la plantilla en documento
+    documento = plantilla.render(diccionario) #Aca renderizamos la plantilla en documento
 
     return HttpResponse(documento)
+
+
+def agendar_cita(request, fech, mot, vet):
+	cita = Cita(fecha=fech, motivo=mot, veterinario=vet)
+	cita.save()
+	return HttpResponse("Cita agendada")

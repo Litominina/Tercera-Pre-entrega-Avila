@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    "AppLitobar",
 ]
 
 MIDDLEWARE = [
@@ -54,7 +55,7 @@ ROOT_URLCONF = "proyecto_litobar.urls"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [],
+        "DIRS": [BASE_DIR / "C:/Users/lavilaga/Desktop/Curso Python/Actividades/Tercera pre-entrega Avila/proyecto_litobar/plantillas/"],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [

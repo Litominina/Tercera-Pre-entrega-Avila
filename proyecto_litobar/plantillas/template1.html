@@ -12,6 +12,22 @@
         (porque la primera la hice en clase jaja)
     </p>
 
+    <p style="color:midnightblue"> Mi nombre es {{nombre}} </p>
+    <p style="color:fuchsia"> Mi apellido es {{apellido}} </p>
+    <p style="color:blueviolet"> Este template fue creado {{hoy}} </p>
+
+    <br><br>
+    <p><b>Este es mi ranking de belleza:</b></p>
+    <p>
+
+        {% for n in ranking %}
+
+                {% if n < 4 %}
+                    <p style="color:fuchsia"> Ranking Malo {{n}} </p>
+                {% else %} <p style="color:midnightblue"> Ranking Bueno {{n}} </p>
+                {% endif %}
+        
+        {% endfor %}
 
 </body>
 </html>
