@@ -2,6 +2,8 @@
 
 Hola profe!
 
+Biendenido a VeteriLito, es una pagina de veterinaria, donde todas las colitas son felices :)
+
 Mi entrega se compone de un html padre (daddy) que le hereda estilos
 a mis tres otros html que vienen desde modelos:
 -cita
