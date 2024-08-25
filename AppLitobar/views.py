@@ -5,7 +5,7 @@ from .models import Cita
 # Create your views here.
 
 def inicio(req):
-    return render(req, "AppLitobar/index.html")
+    return render(req, "AppLitobar/daddy.html")
 
 def cita(req):
     return render(req, "AppLitobar/cita.html")

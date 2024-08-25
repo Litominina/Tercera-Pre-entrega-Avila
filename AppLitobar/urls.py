@@ -4,9 +4,9 @@ from AppLitobar import views
 
 
 urlpatterns = [
-    path("inicio/", views.inicio),
-    path("cita/", views.cita),
-    path("apoderados/", views.apoderado),
-    path("mascotas/", views.mascotas),
+    path("inicio/", views.inicio, name="inicio"),
+    path("cita/", views.cita, name="cita"),
+    path("apoderados/", views.apoderado, name="apoderado"),
+    path("mascotas/", views.mascotas, name="mascotas"),
     
 ]

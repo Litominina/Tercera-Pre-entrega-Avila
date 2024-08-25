@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>mascotas</title>
+</head>
+<body>
+    {% extends "AppLitobar/daddy.html" %}
+
+    {% load static %}
+
+    {% block contenidoQueCambia %} 
+
+    <!--Aquí va lo que cambia, y lo asociado a está vista :) -->
+        <h1>¡Hola! Ingresa los datos de tu mascota.</h1>
+        <p>Tipo es qué animal es tu mascota: gato, perro, cobaya, etc.<br>
+        Si tu mascota es cacri o quiltro usa la raza mentiza.<br>
+        La edad exprésala solamente en años.</p>
+        <h3></h3>
+
+    {% endblock %}
+</body>
+</html>

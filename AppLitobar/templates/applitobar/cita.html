@@ -5,7 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Citas</title>
 </head>
-<body style="background-color: black">
-    <h1 style="color:hotpink">Aquí vamos a hacer las Citas :)</h1>
+<body>
+    {% extends "AppLitobar/daddy.html" %}
+
+    {% load static %}
+
+    {% block contenidoQueCambia %} 
+
+    <!--Aquí va lo que cambia, y lo asociado a está vista :) -->
+    <h1>¡Hola! Ingresa los datos de tu cita veterinaria.</h1>
+    <p>Cuando ingreses la fecha hazlo en formato YYYY-MM-DD</p>
+    <h3></h3>
+
+    {% endblock %}
 </body>
 </html>

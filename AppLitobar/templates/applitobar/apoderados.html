@@ -3,9 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Apoderados</title>
+    <title>Citas</title>
 </head>
-<body style="background-color:lightpink">
-    <h1 style="color:blueviolet">Aquí están los apoderados</h1>
+<body>
+    {% extends "AppLitobar/daddy.html" %}
+
+    {% load static %}
+
+    {% block contenidoQueCambia %} 
+
+    <!--Aquí va lo que cambia, y lo asociado a está vista :) -->
+        <h1>¡Hola! Ingresa los datos del apoderado.</h1>
+        <p>(También conocido como dueño, padre, presentante, amo, o propietario de la mascota 😊)<br>
+        Cuando ingreses el telefono hazlo agregando el código del pais:<br>
+        Ejemplo: 56985162801 o 5493516420418</p>
+        <h3></h3>
+
+    {% endblock %}
 </body>
 </html>
