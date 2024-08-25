@@ -14,10 +14,47 @@
 
     <!--Aquí va lo que cambia, y lo asociado a está vista :) -->
         <h1>¡Hola! Ingresa los datos del apoderado.</h1>
-        <p>(También conocido como dueño, padre, presentante, amo, o propietario de la mascota 😊)<br>
-        Cuando ingreses el telefono hazlo agregando el código del pais:<br>
+        <p>(También conocido como dueño, padre, representante, amo, o propietario de la mascota 😊)<br>
+        Cuando ingreses el teléfono hazlo agregando el código del pais:<br>
         Ejemplo: 56985162801 o 5493516420418</p>
         <h3></h3>
+
+        <div class="container mt-5">
+            <div class="row justify-content-center">
+                <div class="col-md-6">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="text-center">Apoderado</h3>
+                        </div>
+                        <div class="card-body">
+                            <form action="{% url 'apoderado' %}" method="post">
+                                {% csrf_token %}
+                                <div class="mb-3">
+                                    <label for="nombre_apoderado" class="form-label">Nombre del apoderado:</label>
+                                    <input type="text" class="form-control" id="nombre_apoderado" name="nombre_apoderado" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="apellido" class="form-label">Apellido:</label>
+                                    <input type="text" class="form-control" id="apellido" name="apellido" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="email" class="form-label">E-mail:</label>
+                                    <input type="email" class="form-control" id="email" name="email" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="telefono" class="form-label">Número de teléfono:</label>
+                                    <input type="number" class="form-control" id="telefono" name="telefono" required>
+                                </div>
+                                <div class="text-center">
+                                    <button type="submit" class="btn btn-primary" style="background-color:hotpink; border-color:darkgray;">Enviar</button>
+                                </div>
+                            </form>
+    
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
     {% endblock %}
 </body>

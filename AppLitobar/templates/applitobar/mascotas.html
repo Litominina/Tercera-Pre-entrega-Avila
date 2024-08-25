@@ -19,6 +19,44 @@
         La edad exprésala solamente en años.</p>
         <h3></h3>
 
+        <div class="container mt-5">
+            <div class="row justify-content-center">
+                <div class="col-md-6">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="text-center">Mascotas</h3>
+                        </div>
+                        <div class="card-body">
+                            <form action="{% url 'mascotas' %}" method="post">
+                                {% csrf_token %}
+                                <div class="mb-3">
+                                    <label for="nombre_mascota" class="form-label">Nombre de la mascota:</label>
+                                    <input type="text" class="form-control" id="nombre_mascota" name="nombre_mascota" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="tipo" class="form-label">Tipo:</label>
+                                    <input type="text" class="form-control" id="tipo" name="tipo" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="raza" class="form-label">Raza:</label>
+                                    <input type="text" class="form-control" id="raza" name="raza" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="edad" class="form-label">Edad:</label>
+                                    <input type="number" class="form-control" id="edad" name="edad" required>
+                                </div>
+                                <div class="text-center">
+                                    <button type="submit" class="btn btn-primary" style="background-color:hotpink; border-color:darkgray;">Enviar</button>
+                                </div>
+                            </form>
+    
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+
     {% endblock %}
 </body>
 </html>
