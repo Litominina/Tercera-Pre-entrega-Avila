@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+</head>
+<body>
+    {% extends "AppLitobar/daddy.html" %}
+
+    {% load static %}
+
+    {% block contenidoQueCambia %} 
+
+        <div class="container d-flex justify-content-center">
+            <div class="row">
+                <div class="col-md-6">
+
+                    <p class="fs-5 fw-bold">{{ mensaje }}</p>
+
+                    <form action="" method="POST">
+                        {% csrf_token %}
+                        {{ form.as_p }}
+
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-primary" style="background-color:hotpink; border-color:darkgray;">Iniciar sesión</button>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+
+    {% endblock%}
+</body>
+</html>

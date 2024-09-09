@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Citas</title>
+</head>
+<body>
+    {% extends "AppLitobar/daddy.html" %}
+
+    {% block contenidoQueCambia %} 
+    
+        <div class="container mt-5">
+            <h1 class="text-center">Citas - VeteriLito</h1>
+            <div class="text-center mt-3">
+                <a href="{% url 'New' %}" class="btn btn-primary" style="background-color: hotpink; border-color: darkgray;">Nueva</a>
+            </div>
+            <br>
+            {% for cita in object_list %}
+            <div class="row justify-content-center mt-3">
+                <div class="col-md-6">
+                    <div class="card">
+                        <div class="card-header">
+                            <h4 class="text-center">Reserva: {{ cita.fecha }}</h4>
+                        </div>
+                        <div class="card-body text-center">
+                            <div class="d-flex justify-content-around mt-4">
+                                <a href="{% url 'Detail' cita.id %}" class="btn btn-primary" style="background-color: hotpink; border-color: darkgray;">Leer más</a>
+                                <a href="{% url 'Edit' cita.id %}" class="btn btn-primary" style="background-color: hotpink; border-color: darkgray;">Editar</a>
+                                <a href="{% url 'Delete' cita.id %}" class="btn btn-danger">Borrar</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br>
+            {% endfor %}
+        </div>
+
+    {% endblock %}
+</body>
+</html>

@@ -79,6 +79,27 @@
   --bs-highlight-bg: #fff4cc;
 }
 
+.btn-primary {
+  background-color: hotpink;
+  border-color: darkgray;
+}
+
+.btn-black-text {
+  color: black;
+}
+
+.dropdown-menu.dropdown-custom {
+  background-color: rgba(133, 107, 119, 0.966); /* Color más oscuro que el navbar */
+  border: none;
+}
+.dropdown-menu .dropdown-item {
+  color: white; /* Letras iguales a las del nav */
+}
+.dropdown-menu .dropdown-item:hover {
+  background-color: rgba(172, 139, 155, 0.966); /* Fondo igual al nav cuando se pasa el cursor */
+  color: white; /* Color del texto al hacer hover */
+}
+
 *,
 *::before,
 *::after {

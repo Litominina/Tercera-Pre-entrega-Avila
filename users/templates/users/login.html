@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+</head>
+<body>
+    {% extends "AppLitobar/daddy.html" %}
+
+    {% load static %}
+
+    {% block contenidoQueCambia %} 
+
+        {# Este div sólo está agregado para centrar el formulario en la página usando Bootstrap #}
+        <div class="d-flex justify-content-center">
+
+            {# Con este div colocamos el título y debajo el formulario usando Bootstrap #}
+            <div class="d-flex flex-column">
+
+                {# Mensaje personalizado en la vista de Login con estilos de Bootstrap #}
+                <p class="fs-5 fw-bold">{{ msg_login }}</p>
+
+                <form action="" method="POST">
+                    {% csrf_token %}
+                
+                    {{ form.as_p }}
+                
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-primary" style="background-color:hotpink; border-color:darkgray;">Iniciar sesión</button>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    {% endblock %}
+</body>
+</html>

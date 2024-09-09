@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nueva mascota</title>
+</head>
+<body>
+    {% extends "AppLitobar/daddy.html" %}
+
+    {% load static %}
+
+    {% block contenidoQueCambia %}
+
+    <h1 class="text-center">¡Hola! Ingresa los datos de tu mascota.</h1>
+    <p class="text-center">No olvides ningún dato. Y la edad de tus mascota ingrésala en años.</p>
+
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="text-center">Agregar Mascota</h3>
+                    </div>
+                    <div class="card-body">
+                        <form action="" method="post" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            
+
+                            <div class="mb-3">
+                                <label for="nombre_mascota" class="form-label">Nombre de la mascota:</label>
+                                <input type="text" class="form-control" id="nombre_mascota" name="nombre_mascota" required>
+                            </div>
+
+
+                            <div class="mb-3">
+                                <label for="tipo" class="form-label">Tipo:</label>
+                                <input type="text" class="form-control" id="tipo" name="tipo" required>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="raza" class="form-label">Raza:</label>
+                                <input type="text" class="form-control" id="raza" name="raza" required>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="fecha_nacimiento" class="form-label">Fecha de nacimiento:</label>
+                                <input type="date" class="form-control" id="fecha_nacimiento" name="fecha_nacimiento">
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="edad" class="form-label">Edad:</label>
+                                <input type="text" class="form-control" id="edad" name="edad" required>
+                            </div>
+
+                            {% if user.is_superuser %}
+                            <div class="mb-3">
+                                <label for="imagen" class="form-label">Imagen de la mascota:</label>
+                                <input type="file" class="form-control" id="imagen" name="imagen">
+                            </div>
+                            {% endif %}
+
+
+                            <div class="d-flex justify-content-around mt-2">
+                                <button type="submit" class="btn btn-primary" style="background-color: hotpink; border-color: darkgray;">Enviar</button>
+                                <a href="{% url 'Lista' %}" class="btn btn-primary" style="background-color: hotpink; border-color: darkgray;">Regresar</a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {% endblock %}
+</body>
+</html>

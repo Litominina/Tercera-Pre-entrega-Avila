@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>mascotas</title>
+    <title>Mascotas</title>
 </head>
 <body>
     {% extends "AppLitobar/daddy.html" %}
@@ -13,8 +13,8 @@
     {% block contenidoQueCambia %} 
 
     <!--Aquí va lo que cambia, y lo asociado a está vista :) -->
-        <h1>¡Hola! Ingresa los datos de tu mascota.</h1>
-        <p>Tipo es qué animal es tu mascota: gato, perro, cobaya, etc.<br>
+        <h1 class="text-center">¡Hola! Ingresa los datos de tu mascota.</h1>
+        <p class="text-center">Tipo es qué animal es tu mascota: gato, perro, cobaya, etc.<br>
         Si tu mascota es cacri o quiltro usa la raza mentiza.<br>
         La edad exprésala solamente en años.</p>
         <h3></h3>
@@ -24,7 +24,7 @@
                 <div class="col-md-6">
                     <div class="card">
                         <div class="card-header">
-                            <h3 class="text-center">Mascotas</h3>
+                            <h3 class="text-center">Agregar mascota</h3>
                         </div>
                         <div class="card-body">
                             <form action="{% url 'mascotas' %}" method="post">
@@ -55,7 +55,75 @@
                 </div>
             </div>
         </div>
-    
+
+    <!-- Bucar mascota :) -->
+
+        <div class="container mt-5">
+            <div class="row justify-content-center">
+                <div class="col-md-6">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="text-center">Buscar Mascota</h3>
+                        </div>
+                        <div class="card-body">
+                            <form action="{% url 'buscar' %}" method="GET">
+                                <div class="mb-3">
+                                    <label for="nombre_mascota" class="form-label">Nombre de la mascota:</label>
+                                    <input type="text" class="form-control" id="nombre_mascota" name="nombre_mascota">
+                                </div>
+                                <div class="text-center">
+                                    <button type="submit" class="btn btn-primary" style="background-color: hotpink; border-color: darkgray;">Buscar</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <br>
+
+        {% if nombre_mascota or error_message %}
+        <div class="container mt-5">
+            <div class="row justify-content-center">
+                <div class="col-md-6">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="text-center">Resultados de la búsqueda</h3>
+                        </div>
+                        <div class="card-body">
+                            
+                            <!-- Mostrar mensaje de error si existe -->
+                            {% if error_message %}
+                                <div class="text-center">
+                                    <p style="color: red;">{{ error_message }}</p>
+                                </div>
+                            {% endif %}
+        
+                            <!-- Mostrar resultados si se ha realizado una búsqueda -->
+                            {% if nombre_mascota %}
+                                <p>Estamos buscando a: <strong>{{ nombre_mascota }}</strong></p>
+        
+                                {% if mascotas %}
+                                    <ul class="list-group">
+                                        {% for mascota in mascotas %}
+                                            <li class="list-group-item"><strong>Nombre:</strong> {{ mascota.nombre_mascota }}</li>
+                                            <li class="list-group-item"><strong>Tipo:</strong> {{ mascota.tipo }}</li>
+                                            <li class="list-group-item"><strong>Raza:</strong> {{ mascota.raza }}</li>
+                                            <li class="list-group-item"><strong>Edad:</strong> {{ mascota.edad }}</li>
+                                        {% endfor %}
+                                    </ul>
+                                {% else %}
+                                    <p class="text-center" style="color: gray;">No se encontraron mascotas con ese nombre.</p>
+                                {% endif %}
+                            {% endif %}
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endif %}
 
     {% endblock %}
 </body>

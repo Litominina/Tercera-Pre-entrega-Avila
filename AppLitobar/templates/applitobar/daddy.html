@@ -7,8 +7,10 @@
         <meta name="description" content="" />
         <meta name="author" content="" />
         <title>VeteriLito</title>
-        <!-- Favicon-->
+        <!-- Favicon
         <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+        -->
+        <link rel="shortcut icon" href="{% static 'applitobar/assets/img/favicon.ico' %}">
         <!-- Font Awesome icons (free version)-->
         <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
         <!-- Google fonts-->
@@ -19,9 +21,9 @@
     </head>
     <body id="page-top">
         <!-- Navigation-->
-        <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
+        <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav" style="background-color: rgba(172, 139, 155, 0.966); height: 3.5rem;">
             <div class="container">
-                <a class="navbar-brand" href="https://litominina.github.io/proyecto_2_litobar/"><img src="{% static 'applitobar/assets/img/logolitobar.png' %}" alt="..." /></a>
+                <a class="navbar-brand" href="https://litominina.github.io/proyecto_2_litobar/" target="_blank"><img src="{% static 'applitobar/assets/img/logolitobar.PNG' %}" alt="**" /></a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                     Menu
                     <i class="fas fa-bars ms-1"></i>
@@ -29,9 +31,48 @@
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
                         <li class="nav-item"><a class="nav-link" href="{% url 'inicio' %}">Inicio</a></li>
-                        <li class="nav-item"><a class="nav-link" href="{% url 'cita' %}">Cita</a></li>
-                        <li class="nav-item"><a class="nav-link" href="{% url 'mascotas' %}">Mascotas</a></li>
-                        <li class="nav-item"><a class="nav-link" href="{% url 'apoderado' %}">Apoderado</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{% url 'acerca-de-mi' %}">Acerca de mí</a></li>
+
+                        
+                        <!-- Dropdown Conócenos -->
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Conócenos
+                            </a>
+                            <ul class="dropdown-menu dropdown-custom" aria-labelledby="navbarDropdown">
+                                <li><a class="dropdown-item" href="{% url 'List' %}">Disponibilidad</a></li>
+                                <li><a class="dropdown-item" href="{% url 'Lista' %}">Clientes</a></li>
+                            </ul>
+                        </li>
+
+
+                        <!-- Dropdown Servicios -->
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Servicios
+                            </a>
+                            <ul class="dropdown-menu dropdown-custom" aria-labelledby="navbarDropdown">
+                                <li><a class="dropdown-item" href="{% url 'cita' %}">Cita</a></li>
+                                <li><a class="dropdown-item" href="{% url 'mascotas' %}">Mascotas</a></li>
+                                <li><a class="dropdown-item" href="{% url 'apoderado' %}">Apoderado</a></li>
+                            </ul>
+                        </li>
+        
+                        <!-- Solo mostrar si el usuario está autenticado -->
+                        {% if user.is_authenticated %}
+                        <li class="nav-item"><a class="nav-link" href="{% url 'Profile' %}">Mi Perfil</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{% url 'EditarPerfil' %}">Editar Perfil</a></li>
+                        <li class="nav-item">
+                            <form id="logout-form" method="post" action="{% url 'Logout' %}">
+                                {% csrf_token %}
+                                <button type="submit" class="nav-link btn btn-link" style="text-decoration: none; color: white;">CERRAR SESIÓN</button>
+                            </form>
+                        </li>
+                        {% else %}
+                        <li class="nav-item"><a class="nav-link" href="{% url 'Login' %}">INICIAR SESIÓN</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{% url 'Register' %}">CREAR CUENTA</a></li>
+                        {% endif %}
+        
                     </ul>
                 </div>
             </div>
@@ -45,89 +86,62 @@
             </div>
         </header>
         {% block contenidoQueCambia %}
-        <h4>Este es el inicio y lo usaremos para buscar datos de mascotas.</h4>
-        
-        <div class="container mt-5">
-            <div class="row justify-content-center">
-                <div class="col-md-6">
-                    <div class="card">
-                        <div class="card-header">
-                            <h3 class="text-center">Buscar Mascota</h3>
-                        </div>
-                        <div class="card-body">
-                            <form action="{% url 'buscar' %}" method="GET">
-                                <div class="mb-3">
-                                    <label for="nombre_mascota" class="form-label">Nombre de la mascota:</label>
-                                    <input type="text" class="form-control" id="nombre_mascota" name="nombre_mascota">
-                                </div>
-                                <div class="text-center">
-                                    <button type="submit" class="btn btn-primary" style="background-color: hotpink; border-color: darkgray;">Buscar</button>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
         <br>
+        <h4 class="text-center">Desde ahora comienza tu experiencia VeteriLito.</h4>
+        <br>
+        <p class="text-center" style="width: 60%; margin: 0 auto;">En VeteriLito, tu mascota es más que un animal, es un miembro de la familia. 
+            Nuestra pasión por los animales nació de un profundo amor por nuestras propias mascotas, Venezia y Miaú. Su compañía nos inspiró a 
+            crear un espacio donde todas las mascotas reciban el amor y cuidado que se merecen.
+            <br><br>
+            Entendemos que tu mascota es única y tiene necesidades especiales. Por eso, en VeteriLito ofrecemos servicios veterinarios 
+            completos y personalizados, adaptados a cada paciente. Desde consultas rutinarias y vacunaciones hasta tratamientos especializados, 
+            desde cirugía y hospitalización, contamos con un equipo de profesionales altamente capacitados y comprometidos con el bienestar animal.
+            <br><br><br>
+            <strong>¿Por qué elegir VeteriLito?</strong></p>
+            <br><br>
+            <ul class="text-center" style="width: 70%; margin: 0 auto; list-style-position: inside; list-style-type: square;">
+                <li>Amor por los animales: Nuestra pasión es evidente en cada interacción con tus mascotas.</li>
+                <li>Experiencia y profesionalismo: Contamos con años de experiencia y utilizamos las últimas tecnologías en medicina veterinaria.</li>
+                <li>Atención personalizada: Cada mascota recibe un plan de cuidado personalizado para garantizar su bienestar.</li>
+                <li>Amplia gama de servicios: Ofrecemos todo lo que tu mascota necesita, desde consultas de rutina hasta cuidados paliativos.</li>
+                <li>Ambiente cálido y acogedor: Creamos un ambiente donde tu mascota se sienta segura y relajada.</li>
+            </ul>                       
+            <br><br>                 
+            <p class="text-center" style="width: 70%; margin: 0 auto;"><strong>Nuestros servicios incluyen:</strong></p>
+            <br><br>
+            <ul class="text-center" style="width: 70%; margin: 0 auto; list-style-position: inside; list-style-type: square;">
+                <li>Consultas: Evaluación general de la salud, vacunación, desparasitación.</li>
+                <li>Cirugía: Esterilizaciones, castraciones, cirugía de tejidos blandos.</li>
+                <li>Odontología: Limpieza dental, extracciones dentales.</li>
+                <li>Laboratorio clínico: Análisis de sangre, orina y heces.</li>
+                <li>Radiología y ecografía: Diagnóstico por imágenes.</li>
+                <li>Nutrición: Asesoramiento nutricional personalizado.</li>
+                <li>Peluquería canina: Baños, cortes de pelo y tratamientos estéticos.</li>
+                 <li>Hospitalización: Cuidados intensivos para mascotas enfermas o lesionadas.</li>
+            </ul>
+            <br><br>
+            <p class="text-center" style="width: 70%; margin: 0 auto;">
+            En VeteriLito, creemos que la salud de tu mascota es nuestra prioridad. Nos esforzamos por construir una relación de 
+            confianza contigo, basada en la comunicación abierta y la transparencia. ¡Contáctanos hoy mismo y descubre por qué tantos 
+            dueños de mascotas confían en nosotros para cuidar de sus compañeros peludos!"s mascotas. ¡Contáctanos 
+            ahora y descubre por qué somos la mejor opción para cuidar de tu compañero animal!"</p>
 
-        {% if nombre_mascota or error_message %}
-        <div class="container mt-5">
-            <div class="row justify-content-center">
-                <div class="col-md-6">
-                    <div class="card">
-                        <div class="card-header">
-                            <h3 class="text-center">Resultados de la búsqueda</h3>
-                        </div>
-                        <div class="card-body">
-                            
-                            <!-- Mostrar mensaje de error si existe -->
-                            {% if error_message %}
-                                <div class="text-center">
-                                    <p style="color: red;">{{ error_message }}</p>
-                                </div>
-                            {% endif %}
-        
-                            <!-- Mostrar resultados si se ha realizado una búsqueda -->
-                            {% if nombre_mascota %}
-                                <p>Estamos buscando a: <strong>{{ nombre_mascota }}</strong></p>
-        
-                                {% if mascotas %}
-                                    <ul class="list-group">
-                                        {% for mascota in mascotas %}
-                                            <li class="list-group-item"><strong>Nombre:</strong> {{ mascota.nombre_mascota }}</li>
-                                            <li class="list-group-item"><strong>Tipo:</strong> {{ mascota.tipo }}</li>
-                                            <li class="list-group-item"><strong>Raza:</strong> {{ mascota.raza }}</li>
-                                            <li class="list-group-item"><strong>Edad:</strong> {{ mascota.edad }}</li>
-                                        {% endfor %}
-                                    </ul>
-                                {% else %}
-                                    <p class="text-center" style="color: gray;">No se encontraron mascotas con ese nombre.</p>
-                                {% endif %}
-                            {% endif %}
-                            
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        {% endif %}
+
         {% endblock %}
         <br><br>
         <!-- Footer-->
         <footer class="footer py-4">
             <div class="container">
                 <div class="row align-items-center">
-                    <div class="col-lg-4 text-lg-start">Copyright &copy; Your Website 2024</div>
+                    <div class="col-lg-4 text-lg-start">Copyright &copy; LitóbarAvila 2024</div>
                     <div class="col-lg-4 my-3 my-lg-0">
-                        <a class="btn btn-dark btn-social mx-2" href="#!" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-                        <a class="btn btn-dark btn-social mx-2" href="#!" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-                        <a class="btn btn-dark btn-social mx-2" href="#!" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a class="btn btn-dark btn-social mx-2" href="https://x.com/Litologia" aria-label="Twitter" target="_blank"><i class="fab fa-twitter"></i></a>
+                        <a class="btn btn-dark btn-social mx-2" href="https://www.facebook.com/litobaravila/" aria-label="Facebook" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                        <a class="btn btn-dark btn-social mx-2" href="https://www.linkedin.com/in/litobaravila/" aria-label="LinkedIn"target="_blank"><i class="fab fa-linkedin-in"></i></a>
                     </div>
                     <div class="col-lg-4 text-lg-end">
-                        <a class="link-dark text-decoration-none me-3" href="#!">Privacy Policy</a>
-                        <a class="link-dark text-decoration-none" href="#!">Terms of Use</a>
+                        <a class="link-dark text-decoration-none me-3" href="{% url 'nada-por-aca' %}">Privacy Policy</a>
+                        <a class="link-dark text-decoration-none" href="{% url 'nada-por-aca' %}"">Terms of Use</a>
                     </div>
                 </div>
             </div>
@@ -137,7 +151,7 @@
         <div class="portfolio-modal modal fade" id="portfolioModal1" tabindex="-1" role="dialog" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
-                    <div class="close-modal" data-bs-dismiss="modal"><img src="assets/img/close-icon.svg" alt="Close modal" /></div>
+                    <div class="close-modal" data-bs-dismiss="modal"></div>
                     <div class="container">
                         <div class="row justify-content-center">
                             <div class="col-lg-8">
@@ -172,7 +186,7 @@
         <div class="portfolio-modal modal fade" id="portfolioModal2" tabindex="-1" role="dialog" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
-                    <div class="close-modal" data-bs-dismiss="modal"><img src="assets/img/close-icon.svg" alt="Close modal" /></div>
+
                     <div class="container">
                         <div class="row justify-content-center">
                             <div class="col-lg-8">
@@ -198,7 +212,7 @@
                                     </button>
                                 </div>
                             </div>
-                        </div>
+                        
                     </div>
                 </div>
             </div>
@@ -207,7 +221,7 @@
         <div class="portfolio-modal modal fade" id="portfolioModal3" tabindex="-1" role="dialog" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
-                    <div class="close-modal" data-bs-dismiss="modal"><img src="assets/img/close-icon.svg" alt="Close modal" /></div>
+
                     <div class="container">
                         <div class="row justify-content-center">
                             <div class="col-lg-8">
@@ -233,7 +247,7 @@
                                     </button>
                                 </div>
                             </div>
-                        </div>
+                        
                     </div>
                 </div>
             </div>
@@ -242,7 +256,7 @@
         <div class="portfolio-modal modal fade" id="portfolioModal4" tabindex="-1" role="dialog" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
-                    <div class="close-modal" data-bs-dismiss="modal"><img src="assets/img/close-icon.svg" alt="Close modal" /></div>
+
                     <div class="container">
                         <div class="row justify-content-center">
                             <div class="col-lg-8">
@@ -268,7 +282,7 @@
                                     </button>
                                 </div>
                             </div>
-                        </div>
+                        
                     </div>
                 </div>
             </div>
@@ -277,7 +291,7 @@
         <div class="portfolio-modal modal fade" id="portfolioModal5" tabindex="-1" role="dialog" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
-                    <div class="close-modal" data-bs-dismiss="modal"><img src="assets/img/close-icon.svg" alt="Close modal" /></div>
+    
                     <div class="container">
                         <div class="row justify-content-center">
                             <div class="col-lg-8">
@@ -302,7 +316,7 @@
                                         Close Project
                                     </button>
                                 </div>
-                            </div>
+                            
                         </div>
                     </div>
                 </div>
@@ -312,7 +326,7 @@
         <div class="portfolio-modal modal fade" id="portfolioModal6" tabindex="-1" role="dialog" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
-                    <div class="close-modal" data-bs-dismiss="modal"><img src="assets/img/close-icon.svg" alt="Close modal" /></div>
+
                     <div class="container">
                         <div class="row justify-content-center">
                             <div class="col-lg-8">
@@ -338,7 +352,7 @@
                                     </button>
                                 </div>
                             </div>
-                        </div>
+                        
                     </div>
                 </div>
             </div>
@@ -346,11 +360,11 @@
         <!-- Bootstrap core JS-->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
         <!-- Core theme JS-->
-        <script src="js/scripts.js"></script>
         <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
         <!-- * *                               SB Forms JS                               * *-->
         <!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
         <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
         <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
+    
     </body>
 </html>

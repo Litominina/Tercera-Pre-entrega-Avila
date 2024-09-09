@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar cita</title>
+</head>
+<body>
+    {% extends "AppLitobar/daddy.html" %}
+
+    {% load static %}
+
+    {% block contenidoQueCambia %}
+
+        <div class="container d-flex justify-content-center">
+            <div class="row">
+                <div class="col-md-9">
+
+                    <form action="" method="POST" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        
+                        <div class="mb-3">
+                            <label for="fecha" class="form-label">Fecha:</label>
+                            <input type="date" class="form-control" id="fecha" name="fecha" value="{{ form.fecha.value|default_if_none:'' }}" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="motivo" class="form-label">Motivo:</label>
+                            {{ form.motivo }}
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="veterinario" class="form-label">Veterinario:</label>
+                            {{ form.veterinario }}
+                        </div>
+
+                        {% if user.is_superuser %}
+                        <div class="mb-3">
+                            <label for="imagen_mascota" class="form-label">Imagen de la Mascota:</label>
+                            {{ form.imagen_mascota }}
+                        </div>
+                        {% endif %}
+
+                        <div class="card-body text-center">
+                            <div class="d-flex justify-content-around mt-4">
+                                <button type="submit" class="btn btn-warning" style="color: black;">Editar</button>
+                                <a href="{% url 'List' %}" class="btn btn-primary" style="background-color: hotpink; border-color: darkgray;">Regresar</a>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    {% endblock %}
+</body>
+</html>

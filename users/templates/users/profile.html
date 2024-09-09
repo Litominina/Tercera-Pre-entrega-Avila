@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    {% extends "AppLitobar/daddy.html" %}
+    {% load static %}
+    
+    {% block contenidoQueCambia %}
+    <div class="container mt-4">
+        <h2>Perfil de {{ usuario.username }}</h2>
+        <p><strong>Email:</strong> {{ usuario.email }}</p>
+        <p><strong>Nombre:</strong> {{ usuario.first_name }}</p>
+        <p><strong>Apellido:</strong> {{ usuario.last_name }}</p>
+        <p><strong>Enlace a tu página web:</strong> {{ usuario.profile.website }}</p>
+        <p>Descripción: {{ usuario.profile.description }}</p>
+        {% if usuario.profile.profile_image %}
+            <img src="{{ usuario.profile.profile_image.url }}" alt="Imagen de perfil">
+        {% else %}
+            <p>No hay imagen de perfil.</p>
+        {% endif %}
+        <br><br>
+        <a href="{% url 'EditarPerfil' %}" class="btn btn-primary" style="background-color:hotpink; border-color:darkgray;">Editar Perfil</a>
+    </div>
+    {% endblock %}
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Acerca de mí</title>
+    <style>
+        .rounded-img {
+            border-radius: 15px; 
+            width: 80%; 
+            height: auto;
+        }
+        .image-container {
+            margin-left: -25px; 
+            margin-right: -25px; 
+        }
+    </style>
+</head>
+<body>
+    {% extends "AppLitobar/daddy.html" %}
+
+    {% load static %}
+
+    {% block contenidoQueCambia %} 
+    <br>
+    <h1 class="text-center">¡Hola! Mi nombre es Litóbar Avila 🦄</h1><br>
+    
+    
+    <div class="container text-center">
+        <div class="row justify-content-center">
+            <div class="col-md-5 image-container">
+                <img src="{% static 'applitobar/assets/img/yo1.jpeg' %}" alt="Foto 1" class="rounded-img">
+            </div>
+            <div class="col-md-5 image-container">
+                <img src="{% static 'applitobar/assets/img/yo2.jpeg' %}" alt="Foto 2" class="rounded-img">
+            </div>
+        </div>
+    </div>
+    <br>
+
+    <p class="text-center" style="width: 70%; margin: 0 auto;">
+        <strong>Soy la creadora de esta página, pero también soy: Ingeniera - Analista de Datos - Gestión de equipo y clientes.</strong> 
+        Esta soy yo, en algunas palabras (laboralmente): Ingeniera en Electrónica, bilingüe, con 5 años de experiencia liderando equipos con foco en análisis de datos, en la gestión y administración de KPI’s, 
+        y desarrollo de planes de acción orientados a la mejora intrínseca del performance, con propuestas que encuentran solución a problemas,
+        a través de la creación de modelos para la mejora continua. Sumando experiencia en ingreso y observación de data en ventas, impulsando 
+        su crecimiento y dirigiéndolas administrativamente.  Manejo SQL, HTML, CSS además de Tableau, Power BI y JavaScript como junior (aprendiendo Python).
+        <br><br>
+        Siempre me han apasionado los animales, tengo una perrita (Venezia) y una gata (Miau) así que ellas son mi inspiración para esta web y esta veterinaria, 
+        donde la meta y misión es ayudar a todas nuestras mascotas a estar sanas y felices.
+    </p>
+    <br>
+
+    <div class="card-body text-center">
+        <a href="https://drive.google.com/file/d/1cToslbrfmmiDAgvPXbr3s4lzvijtDUhQ/view?usp=drive_link" class="btn btn-primary" style="background-color: hotpink; border-color: darkgray;" target="_blank">Descargar mi CV</a>
+    </div>
+
+    {% endblock %}
+    
+</body>
+</html>

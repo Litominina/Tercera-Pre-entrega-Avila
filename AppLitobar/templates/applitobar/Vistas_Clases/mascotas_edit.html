@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Mascota</title>
+</head>
+<body>
+    {% extends "AppLitobar/daddy.html" %}
+
+    {% load static %}
+
+    {% block contenidoQueCambia %} 
+
+        <div class="container d-flex justify-content-center">
+            <div class="row">
+                <div class="col-md-9">
+
+                    <form action="" method="POST" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        
+                        <div class="mb-3">
+                            <label for="nombre_mascota" class="form-label">Nombre de la mascota:</label>
+                            {{ form.nombre_mascota }}
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="tipo" class="form-label">Tipo:</label>
+                            {{ form.tipo }}
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="raza" class="form-label">Raza:</label>
+                            {{ form.raza }}
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="fecha_nacimiento" class="form-label">Fecha de Nacimiento:</label>
+                            <input type="date" class="form-control" id="fecha_nacimiento" name="fecha_nacimiento" value="{{ form.fecha_nacimiento.value|default_if_none:'' }}">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="edad" class="form-label">Edad:</label>
+                            {{ form.edad }}
+                        </div>
+
+                        {% if user.is_superuser %}
+                        <div class="mb-3">
+                            <label for="imagen" class="form-label">Imagen:</label>
+                            {{ form.imagen }}
+                        </div>
+                        {% endif %}
+
+                        <!-- Botones -->
+                        <div class="card-body text-center">
+                            <div class="d-flex justify-content-around mt-4">
+                                <button type="submit" class="btn btn-warning" style="color: black;">Editar</button>
+                                <a href="{% url 'Lista' %}" class="btn btn-primary" style="background-color: hotpink; border-color: darkgray;">Regresar</a>
+                            </div>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+
+    {% endblock %}
+</body>
+</html>

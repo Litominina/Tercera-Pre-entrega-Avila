@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalle Cita</title>
+</head>
+<body>
+    {% extends "AppLitobar/daddy.html" %}
+
+    {% load static %}
+
+    {% block contenidoQueCambia %}
+        <br>
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-6 text-center">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Detalles de la Cita</h5>
+                            <br>
+                            <p class="card-text"><b>Fecha:</b> {{ cita.fecha }}</p>
+                            <p class="card-text"><b>Motivo:</b> {{ cita.motivo }}</p>
+                            <p class="card-text"><b>Veterinario:</b> {{ cita.veterinario }}</p>
+                            {% if cita.imagen_mascota %}
+                                <img src="{{ cita.imagen_mascota.url }}" alt="Imagen de la mascota" class="img-fluid mb-3">
+                            {% else %}
+                                <p>No hay imagen disponible</p>
+                            {% endif %}
+                            <br><br>
+                            <p class="card-text" style="font-size: 0.70rem; font-weight: normal; color: gray; margin-bottom: 0;">
+                                Fecha de creación: {{ cita.fecha_creacion }}
+                            </p>
+                            <p class="card-text" style="font-size: 0.70rem; font-weight: normal; color: gray; margin-top: 0;">
+                                Última modificación: {{ cita.fecha_modificacion }}
+                        </div>
+                    </div>
+                    <br>
+                    <a href="{% url 'List' %}" class="btn btn-primary" style="background-color: hotpink; border-color: darkgray;">Regresar</a>
+                </div>
+            </div>
+        </div>
+    {% endblock %}
+</body>
+</html>

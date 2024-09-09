@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalle Mascota</title>
+</head>
+<body>
+    {% extends "AppLitobar/daddy.html" %}
+
+    {% load static %}
+
+    {% block contenidoQueCambia %}
+        <br>
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-6 text-center">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Detalles de la Mascota</h5>
+                            <br>
+                            {% if mascota.imagen %}
+                            <img src="{{ mascota.imagen.url }}" alt="Imagen de {{ mascota.nombre_mascota }}" class="img-fluid mb-3">
+                        {% else %}
+                            <p>No hay imagen disponible</p>
+                        {% endif %}
+                            <p class="card-text"><b>Nombre:</b> {{ mascota.nombre_mascota }}</p>
+                            <p class="card-text"><b>Tipo:</b> {{ mascota.tipo }}</p>
+                            <p class="card-text"><b>Raza:</b> {{ mascota.raza }}</p>
+                            <p class="card-text"><b>Fecha de Nacimiento:</b> {{ mascota.fecha_nacimiento }}</p>
+                            <p class="card-text"><b>Edad:</b> {{ mascota.edad }}</p>
+                            <br><br>
+                            <p class="card-text" style="font-size: 0.70rem; font-weight: normal; color: gray; margin-bottom: 0;">
+                                Fecha de creación: {{ mascota.fecha_new }}
+                            </p>
+                            <p class="card-text" style="font-size: 0.70rem; font-weight: normal; color: gray; margin-top: 0;">
+                                Última modificación: {{ mascota.fecha_edit }}
+                        </div>
+                    </div>
+                    <br>
+                    <a href="{% url 'Lista' %}" class="btn btn-primary" style="background-color: hotpink; border-color: darkgray;">Regresar</a>
+                </div>
+            </div>
+        </div>
+    {% endblock %}
+</body>
+</html>

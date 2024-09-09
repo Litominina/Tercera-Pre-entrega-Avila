@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Usuario</title>
+</head>
+<body>
+    {% extends "AppLitobar/daddy.html" %}
+    {% load static %}
+    
+    {% block contenidoQueCambia %}
+    <br>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header">
+                        <h4>Editar perfil de {{ usuario }}</h4>
+                    </div>
+                    <div class="card-body">
+                        <form action="" method="POST" enctype="multipart/form-data">  
+                            {% csrf_token %}
+                            {{ mi_form.as_p }}
+                            <div class="text-center mt-3">
+                                <button type="submit" class="btn btn-primary" style="background-color: hotpink; border-color: darkgray;">Actualizar</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endblock %}
+</body>
+</html>

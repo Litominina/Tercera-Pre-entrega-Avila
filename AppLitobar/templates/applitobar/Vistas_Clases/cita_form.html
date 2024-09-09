@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nueva cita</title>
+</head>
+<body>
+    {% extends "AppLitobar/daddy.html" %}
+
+    {% load static %}
+
+    {% block contenidoQueCambia %}
+
+    <h1 class="text-center">¡Hola! Ingresa los datos de tu cita veterinaria.</h1>
+    <p class="text-center">Cuéntanos todos los detalles de la cita que quieres agendar.</p>
+
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="text-center">Agendar cita</h3>
+                    </div>
+                    <div class="card-body">
+                        <form action="" method="post" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            
+                            <div class="mb-3">
+                                <label for="fecha" class="form-label">Fecha:</label>
+                                <input type="date" class="form-control" id="fecha" name="fecha" required>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="motivo" class="form-label">Motivo:</label>
+                                <input type="text" class="form-control" id="motivo" name="motivo" required>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="veterinario" class="form-label">Veterinario:</label>
+                                <input type="text" class="form-control" id="veterinario" name="veterinario" required>
+                            </div>
+
+                            {% if user.is_superuser %}
+                            <div class="mb-3">
+                                <label for="imagen_mascota" class="form-label">Imagen de la mascota que necesita la cita:</label>
+                                <input type="file" class="form-control" id="imagen_mascota" name="imagen_mascota">
+                            </div>
+                            {% endif %}
+
+                            <div class="text-center d-flex justify-content-around mt-4">
+                                <button type="submit" class="btn btn-primary" style="background-color: hotpink; border-color: darkgray;">Enviar</button>
+                                <a href="{% url 'List' %}" class="btn btn-primary" style="background-color: hotpink; border-color: darkgray;">Regresar</a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {% endblock %}
+</body>
+</html>

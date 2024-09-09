@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Citas</title>
+    <title>Apoderados</title>
 </head>
 <body>
     {% extends "AppLitobar/daddy.html" %}
@@ -13,8 +13,8 @@
     {% block contenidoQueCambia %} 
 
     <!--Aquí va lo que cambia, y lo asociado a está vista :) -->
-        <h1>¡Hola! Ingresa los datos del apoderado.</h1>
-        <p>(También conocido como dueño, padre, representante, amo, o propietario de la mascota 😊)<br>
+        <h1 class="text-center">¡Hola! Ingresa los datos del apoderado.</h1>
+        <p class="text-center">(También conocido como dueño, padre, representante, amo, o propietario de la mascota 😊)<br>
         Cuando ingreses el teléfono hazlo agregando el código del pais:<br>
         Ejemplo: 56985162801 o 5493516420418</p>
         <h3></h3>
@@ -24,7 +24,7 @@
                 <div class="col-md-6">
                     <div class="card">
                         <div class="card-header">
-                            <h3 class="text-center">Apoderado</h3>
+                            <h3 class="text-center">Agregar apoderado</h3>
                         </div>
                         <div class="card-body">
                             <form action="{% url 'apoderado' %}" method="post">

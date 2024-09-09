@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Borrar Mascota</title>
+</head>
+<body>
+    {% extends "AppLitobar/daddy.html" %}
+
+    {% load static %}
+
+    {% block contenidoQueCambia %}
+
+    <div class="container d-flex flex-column align-items-center">
+        <div class="card my-3" style="width: 30rem;">
+            <div class="card-body">
+                <form action="" method="POST">
+                    {% csrf_token %}
+                    <h5 class="card-title text-center">¿Estás seguro que deseas borrar la mascota "{{ object }}"?</h5>
+                    <div class="card-body text-center">
+                        <div class="col-md-12">
+                            <div class="d-flex justify-content-around mt-4">
+                            <button type="submit" class="btn btn-danger">Borrar</button>
+                            <a href="{% url 'Lista' %}" class="btn btn-primary" style="background-color: hotpink; border-color: darkgray;">Regresar</a>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+   
+    {% endblock %}
+
+</body>
+</html>

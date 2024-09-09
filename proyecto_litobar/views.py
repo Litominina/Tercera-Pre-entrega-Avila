@@ -28,19 +28,11 @@ def probando_template(request):
 	
     diccionario = {"nombre": nom, "apellido": ap, "hoy": datetime.now(), "ranking": ranking_belleza}
 
-
-    #miHtml = open("C:/Users/lavilaga/Desktop/Curso Python/Actividades/Tercera pre-entrega Avila/proyecto_litobar/plantillas/template1.html")
-
-    #plantilla = Template(miHtml.read()) #Se carga en memoria nuestro documento, template1   
-    ##OJO importar template y contex, con: from django.template import Template, Context
-
-    #miHtml.close() #Cerramos el archivo
 	
     plantilla = loader.get_template("template1.html")
 
-    #miContexto = Context(diccionario) #EN este caso no hay nada ya que no hay parametros, IGUAL hay que crearlo
 
-    documento = plantilla.render(diccionario) #Aca renderizamos la plantilla en documento
+    documento = plantilla.render(diccionario) 
 
     return HttpResponse(documento)
 
